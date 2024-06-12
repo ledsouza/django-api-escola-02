@@ -35,6 +35,17 @@ argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
 
 [[package]]
+name = "django-admin-honeypot"
+version = "1.1.0"
+description = "A fake Django admin login screen to notify admins of attempted unauthorized access."
+optional = false
+python-versions = "*"
+files = [
+    {file = "django-admin-honeypot-1.1.0.tar.gz", hash = "sha256:e18a52832b82740917737873c6f34117d15631565e9e4b7dbb9df48a29250796"},
+    {file = "django_admin_honeypot-1.1.0-py2.py3-none-any.whl", hash = "sha256:88e72753f5cbda88d909292d9f3fe7741fb74a8afad083f96e86114238f9b364"},
+]
+
+[[package]]
 name = "django-cors-headers"
 version = "4.3.1"
 description = "django-cors-headers is a Django application for handling the server headers required for Cross-Origin Resource Sharing (CORS)."
@@ -411,4 +422,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "e49bb3ecee223d7c608ab8fce2fff63f0c5ef2e10d7e899f53b05201cb0bda70"
+content-hash = "acc1932bd6f74470d8d3243515bb4eebc0f56add73a13c1646222281c47fe329"

@@ -22,6 +22,7 @@ class CursosViewSet(viewsets.ModelViewSet):
     """Exibindo todos os cursos"""
     queryset = Curso.objects.all()
     serializer_class = CursoSerializer
+    http_method_names = ['get', 'post', 'put', 'patch']
 
     def create(self, request):
         serializer = self.serializer_class(data=request.data)
@@ -38,7 +39,7 @@ class MatriculaViewSet(viewsets.ModelViewSet):
     """Listando todas as matrículas"""
     queryset = Matricula.objects.all()
     serializer_class = MatriculaSerializer
-    http_method_names = ['get', 'post', 'put', 'path']
+    http_method_names = ['get', 'post', 'put', 'patch']
 
     @method_decorator(cache_page(60))
     def dispatch(self, request, *args, **kwargs):

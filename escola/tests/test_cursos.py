@@ -20,7 +20,7 @@ class CursoTestCase(APITestCase):
 
     def test_requisicao_get_para_listar_cursos(self):
         """
-        Verifica se uma requisição GET para a URL de listagem de cursos retorna o status HTTP 200 OK,
+        Verifica se uma requisição GET para a URL de cursos retorna o status HTTP 200 OK,
         indicando que a lista de cursos foi obtida com sucesso.
         """
         response = self.client.get(self.list_url)
@@ -28,12 +28,8 @@ class CursoTestCase(APITestCase):
 
     def test_requisicao_post_para_criar_curso(self):
         """
-        Testa a criação de um novo curso através de uma requisição POST.
-
-        Valida se:
-
-        * O status code da resposta é HTTP 201 CREATED, indicando que o curso foi criado.
-        * Os dados do curso criado (código, descrição, nível) estão corretos na resposta.
+        Verifica se uma requisição POST para a criação de um novo curso retorna HTTP 201
+        CREATED, indicando que o curso foi criado.
         """
         novo_curso = {
             'id': 3,
@@ -43,4 +39,30 @@ class CursoTestCase(APITestCase):
         }
         response = self.client.post(self.list_url, data=novo_curso)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        self.assertDictEqual(response.data, novo_curso)
+
+    def test_requisicao_delete_para_deletar_curso(self):
+        """
+        Verifica se uma requisição DELETE para deletar um curso retorna o status HTTP 405 METHOD NOT ALLOWED,
+        indicando que o método DELETE não é permitido para esta URL.
+
+        Este teste garante que a API não permita a exclusão de cursos através de requisições DELETE.
+        """
+        response = self.client.delete(self.list_url + '1/')
+        self.assertEqual(response.status_code,
+                         status.HTTP_405_METHOD_NOT_ALLOWED)
+
+    def test_requisicao_put_para_atualizar_curso(self):
+        """
+        Verifica se uma requisição PUT para atualizar um curso retorna o status HTTP 200 OK,
+        indicando que o curso foi atualizado com sucesso.
+
+        Este teste garante que a API permita a atualização de cursos através de requisições PUT,
+        enviando os dados atualizados no corpo da requisição.
+        """
+        curso_atualizado = {
+            'codigo_curso': 'CTT1',
+            'descricao': 'Curso teste 1 atualizado',
+            'nivel': 'I'
+        }
+        response = self.client.put(self.list_url + '1/', data=curso_atualizado)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)

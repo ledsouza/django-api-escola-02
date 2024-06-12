@@ -43,7 +43,7 @@ O projeto segue a estrutura padrão de um projeto Django, com os seguintes compo
 
 ## Como Executar o Projeto
 
-1. Clone este repositório: `git clone https://github.com/seu_usuario/api-escola-02.git`
+1. Clone este repositório: `git clone https://github.com/seu_usuario/django-api-escola-02.git`
 2. Inicialize o poetry: `poetry init`
 3. Instale as dependências do projeto: `poetry install`
 4. Ative o ambiente virtual: `poetry shell`
